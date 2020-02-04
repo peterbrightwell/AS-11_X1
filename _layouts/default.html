@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+
+      <div id="logo-banner">
+        <a href="https://amwa-tv.github.io/as-11"><img id="as-11-logo" src="{{ site.baseurl }}/assets/images/AS-11-80a0ff.png" alt="AS-11 logo"/></a>
+        <span id="title">MXF Program Contribution Specifications</span>
+        <a href="https://www.amwa.tv/"><img id="amwa-logo" src="{{ site.baseurl }}/assets/images/from-AMWA-80a0ff.png" target="_blank" alt="from AMWA logo"/></a>
+      </div>
+
+        <div class="header" id="myHeader">
+          <a href="{{ site.baseurl }}/">HOME</a>
+
+          {% case site.amwa_id %}
+
+          {% when "AS-11" %}
+            <a href="{{ site.baseurl }}/branches/master/NMOS_Technical_Overview.html">OVERVIEW</a>  
+
+          {% else %}
+
+            {% if site.amwa_id contains "AS-11_X" %}
+              <a href="{{ site.baseurl }}/AMWA_{{ site.amwa_id | replace: "AS-11_", "AS_11_" }}.html">SPEC</a>
+            
+            {% else %}
+              UNKNOWN ID
+            {% endif %}
+
+          {% endcase %}
+
+          <a href="{{ site.github.repository_url }}">GITHUB</a>
+          <a href="https://github.com/AMWA-TV/AS-11_Overview/wiki">WIKI</a>
+          <span class="dropdown">AS-11...
+              <div class="dropdown-content">
+                  <p><a href="https://amwa-tv.github.io/AS-11_UK_DPP_SD">UK DPP SD</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_UK_DPP_HD">UK DPP HD</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_X1">X1: UK DPP UHD</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_X2">X2: HD Intra</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_X3">X3: HD Long GOP (25p, 50p)</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_X4">X4: HD Long GOP (23.98p, 59.94p)</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_X5">X5: DPP UHD Commercials and Promotions</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_X6">X6: DPP HD Commercials and Promotions</a></p>
+                  <p><a href="https://amwa-tv.github.io/AS-11_X7">X7: Program Contribution - SD</a></p>
+              </div>
+          </span>
+        </div>
+  
+      <div class="content">
+        {{ content }}
+      </div>
+
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+          Documentation built at {{ site.time | date: '%H:%M:%S %Z on %Y-%m-%d' }}. 
+      {% if site.github.private != true and site.github.license %}
+          This site is open source. {% github_edit_link "Improve this page" %}.
+      {% endif %}
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+    {% if site.google_analytics %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endif %}
+
+
+    <script>
+    window.onscroll = function() {myFunction()};
+    
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+    
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+
+    </script>
+  </body>
+</html>
